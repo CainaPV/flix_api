@@ -40,7 +40,7 @@ class MovieModelSerializer(serializers.ModelSerializer):
        else:
           return value   
 
-    def validate_realese_date(self,value):
+    def validate_release_date(self,value):
         if value.year < 2000:
          raise serializers.ValidationError('Só são permitidos filmes lançados a partir do ano 2000 em diante')
         else:
@@ -62,7 +62,7 @@ class MovieSerializerDinamic(serializers.ModelSerializer):
 
    class Meta:
       model = Movie
-      fields = ['rate', 'id', 'title', 'genre', 'actor', 'realese_date', 'resume']
+      fields = ['rate', 'id', 'title', 'genre', 'actor', 'release_date', 'resume']
 
    def get_rate(self, obj):
       rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
