@@ -18,7 +18,7 @@ from actors.models import Actor
 #SERIALIZER.MODELSERIALIZER
 class MovieModelSerializer(serializers.ModelSerializer):
     
-    realese_date = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
+    release_date = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
 
     rate = serializers.SerializerMethodField(read_only=True) 
 
@@ -55,7 +55,7 @@ class MovieModelSerializer(serializers.ModelSerializer):
 
 #SERIALIZER DINÂMICO (SEM ESTÁ NO PADRÃO RESTFUL)
 class MovieSerializerDinamic(serializers.ModelSerializer):
-   realese_date = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
+   release_date = serializers.DateField(format='%d/%m/%Y', input_formats=['%d/%m/%Y'])
    rate = serializers.SerializerMethodField(read_only = True)
    genre = GenreSerializer()
    actor = ActorSerializerActor(many = True)
