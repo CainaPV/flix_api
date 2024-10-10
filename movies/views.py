@@ -42,12 +42,12 @@ class MovieStatics(APIView):
     def get(self, request):
         total_movies = self.queryset.count()
         list_genres = ({'name': g.name,'id': g.id} for g in Genre.objects.all())
-        # list_genres_in_movies = self.queryset.values('genre__name', 'genre__id').distinct()
+        list_genres_in_movies = list(self.queryset.values('genre__name', 'genre__id'))
         total_reviews = Review.objects.count()
         total_rate_stars = Review.objects.aggregate(Avg('stars'))['stars__avg']
 
 
-        return Response(data = {'total_movies': total_movies, 'list_genres': list_genres, 'total_reviews': total_reviews,'total_rate_stars': round(total_rate_stars,1)}, 
+        return Response(data = {'total_movies': total_movies, 'list_genres_in_movies': list_genres_in_movies, 'list_genres': list_genres, 'total_reviews': total_reviews,'total_rate_stars': round(total_rate_stars,1)}, 
                         status= HTTP_200_OK,)
         
 
