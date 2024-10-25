@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 venv
 *. sqlite3
 __pycache__/
+=======
+venv/
+__pycache__/
+requeriments_dev.txt
+>>>>>>> e9b3cc245c0cd1388369358a6ae8cf782717fa6d
